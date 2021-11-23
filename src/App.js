@@ -12,6 +12,8 @@ import TestPage from "./components/pages/TESTPAGE";
 import OrganisePage from "./components/pages/OrganisePage";
 
 import { Routes, Route } from "react-router-dom";
+import { exportContextProvide } from "./components/pages/CreateExcursion";
+
 //import { logo } from "./imagefiles/logo.png";
 
 function App() {
@@ -25,7 +27,12 @@ function App() {
           path="/assign-duties"
           element={<AssignDuties title="Assign duties" />}
         />
-        <Route path="/add-duties" element={<AddDuties title="Add duties" />} />
+        <exportContextProvide>
+          <Route
+            path="/add-duties"
+            element={<AddDuties title="Add duties" />}
+          />
+        </exportContextProvide>
         <Route
           path="/create-excursion"
           element={<CreateExcursion title="Create excursion" />}
