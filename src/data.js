@@ -34,6 +34,10 @@ export async function postExcursion(e, destination, year, context) {
 // }
 
 export async function getDuties(context, setDuties) {
+  console.log("test")
+  let result = await Parse.Cloud.run("duties")
+  console.log(result)
+  /*
   // Reading parse objects is done by using Parse.Query
   const parseQuery = new Parse.Query("Duty");
   parseQuery.contains("excursionId", context);
@@ -48,6 +52,7 @@ export async function getDuties(context, setDuties) {
     alert(error);
     return false;
   }
+  */
 }
 
 export async function getParticipants(context, setParticipants) {
@@ -130,10 +135,14 @@ export async function postDuty(item, excursionPointer, context) {
   }
 }
 
-export async function getExcursions() {
+async function getExcursions() {
   let excursions = [];
+  let result = await Parse.Cloud.run("excursionsCloud")
+  console.log(result)
+}
 
-  try {
+  /**
+   *   try {
     const rawResponse = await fetch(
       "https://parseapi.back4app.com/classes/Excursion",
       {
@@ -157,8 +166,7 @@ export async function getExcursions() {
     return excursions;
   } catch (error) {
     console.log(error);
-  }
-}
+  }*/
 
 export async function postParticipant(
   firstName,
